@@ -35,7 +35,7 @@ The program tries to reorder the existing instructions in best possible way to r
 The program functionality is completely preserved even after reordering. The 'start' and 'end' contents of all the registers will be the same in both the new and old codes. We just played with the intermediate contents and optimised the code for pipelining.
 
 These dependencies can occur only between 5th stage of an instruction and 3rd stage of another instruction. 5th stage being the updating step and 3rd stage being the execution/using step.
-So, each instruction is divided based on what it updates and what it uses and a dependency graph is made accordingly.<\br>
+So, each instruction is divided based on what it updates and what it uses and a dependency graph is made accordingly.
 
 As for the no of cycles wasted by memory delays, we calculate if the current instruction is a memory instruction and if the following instruction is a NOP/HLT. We get 6(2*3) or 4 cylces wasted respectively.
 
