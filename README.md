@@ -17,6 +17,8 @@
 | HLT | Stops execution|
 | NOP | Does Nothing|
 
+![Working:](https://raw.githubusercontent.com/MadhavChoudhary/8085Pipeliner/master/Screenshot.png)
+
 ## Instructions:
 ```
 g++ compiler.cpp
