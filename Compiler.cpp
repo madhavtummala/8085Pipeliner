@@ -331,7 +331,7 @@ void Dependency::Find(vector<int> &ans)
 int main()
 {
 	//Take Input code from a file
-    ifstream file("test.txt");
+    ifstream file("Tests/test.txt");
 
     vector< string > code;
     string line;
@@ -340,10 +340,10 @@ int main()
 
     int n = code.size()-1;
 
-    printf("\nInput Code:\n");
-    for(int i=0;i<code.size();i++)
-    	cout<<code[i]<<endl;
-    cout<<endl;
+    // printf("\nInput Code:\n");
+    // for(int i=0;i<code.size();i++)
+    // 	cout<<code[i]<<endl;
+    // cout<<endl;
 
     Dependency d(n);
 
@@ -421,15 +421,15 @@ int main()
     }
     new_code.pb("HLT");
 
-    printf("\nNew Code:\n");
-    for(int i=0;i<new_code.size();i++)
-    	cout<<new_code[i]<<endl;
+    // printf("\nNew Code:\n");
+    // for(int i=0;i<new_code.size();i++)
+    // 	cout<<new_code[i]<<endl;
 
     //Write the new code to a file
     printf("\nNo of Clock Cycles Wasted due to memory delay = %d\n",mem);
     printf("\nWriting the best possible code to 'test_out.txt'\n(without Dependency offering exactly the same functionality)!\n");
     ofstream outfile;
-    outfile.open("test_out.txt");
+    outfile.open("Tests/test_out.txt");
 
     for(int i=0; i<new_code.size(); i++)
         outfile<<new_code[i]<<endl;
