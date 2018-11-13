@@ -17,7 +17,7 @@
 | HLT | Stops execution|
 | NOP | Does Nothing|
 
-![Working:](https://raw.githubusercontent.com/MadhavChoudhary/8085Pipeliner/master/Screenshot.png)
+![Working](https://raw.githubusercontent.com/MadhavChoudhary/Terminal-Setup/master/Images/Compiler.png)
 
 ## Instructions:
 ```
