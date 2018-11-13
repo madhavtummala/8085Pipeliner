@@ -331,7 +331,15 @@ void Dependency::Find(vector<int> &ans)
 int main()
 {
 	//Take Input code from a file
-    ifstream file("Tests/test.txt");
+    string input_file = "Tests/test1.asm";
+    string output_file = "Tests/test_out.asm";
+
+    ifstream file(input_file);
+
+    if(file.fail()){
+        printf("File \"%s\" not found\n",input_file.c_str());
+        return 0;
+    }
 
     vector< string > code;
     string line;
@@ -356,7 +364,7 @@ int main()
 
     //Analyse each instruction for dependencies
     //Printing Dependencies and generating Graph
-    printf("Finding Dependencies...\n\n");
+    //printf("Finding Dependencies...\n\n");
     int mem=0;
     for(int i=0; i<n; i++)
     {
@@ -373,7 +381,7 @@ int main()
         {
             if(Registers[used1][1]!=-1){
                 d.addEdge(Registers[used1][1],i,1);
-                printf("Dependency :: line %d w.r.t line %d :: R%d\n",i+1,Registers[used1][1]+1,used1);
+                //printf("Dependency :: line %d w.r.t line %d :: R%d\n",i+1,Registers[used1][1]+1,used1);
             }
             Registers[used1][0]=i;            
         }
@@ -382,7 +390,7 @@ int main()
         {
             if(Registers[used2][1]!=-1){
                 d.addEdge(Registers[used2][1],i,1);
-                printf("Dependency :: line %d w.r.t line %d :: R%d\n",i+1,Registers[used2][1]+1,used2);
+                //printf("Dependency :: line %d w.r.t line %d :: R%d\n",i+1,Registers[used2][1]+1,used2);
             }
             Registers[used2][0]=i;
         }
@@ -391,7 +399,7 @@ int main()
         {
             if(Registers[updated][0]!=-1){
                 d.addEdge(Registers[updated][0],i,-1);
-                printf("Dependency :: line %d w.r.t line %d :: R%d\n",i+1,Registers[updated][0]+1,updated);
+                //printf("Dependency :: line %d w.r.t line %d :: R%d\n",i+1,Registers[updated][0]+1,updated);
             }
             Registers[updated][1]=i;
         }
@@ -428,8 +436,14 @@ int main()
     //Write the new code to a file
     printf("\nNo of Clock Cycles Wasted due to memory delay = %d\n",mem);
     printf("\nWriting the best possible code to 'test_out.txt'\n(without Dependency offering exactly the same functionality)!\n");
+    
     ofstream outfile;
-    outfile.open("Tests/test_out.txt");
+    outfile.open(output_file);
+
+    if(outfile.fail()){
+        printf("Output file \"%s\" couldnot be created\n",output_file.c_str());
+        return 0;
+    }
 
     for(int i=0; i<new_code.size(); i++)
         outfile<<new_code[i]<<endl;
